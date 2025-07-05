@@ -48,28 +48,6 @@
       color: #00ffee;
     }
 
-    .music-control {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      z-index: 1000;
-    }
-
-    .music-control button {
-      background: #00ffd9;
-      border: none;
-      padding: 0.5rem 1rem;
-      color: #000;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .music-control button:hover {
-      background: #00ffee;
-    }
-
     header {
       padding: 3rem 1rem;
       text-align: center;
@@ -170,15 +148,6 @@
 <body>
   <div id="particles-js"></div>
 
-  <div class="music-control">
-    <button onclick="toggleMusic()" id="musicBtn">Pause Musik</button>
-  </div>
-
-  <audio autoplay loop id="bgMusic">
-    <source src="https://cdn.pixabay.com/download/audio/2022/11/22/audio_06d259bd97.mp3?filename=deep-space-ambient-126566.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
-
   <nav>
     <a href="index.html">Beranda</a>
     <a href="galeri.html">Galeri Foto</a>
@@ -186,8 +155,7 @@
   </nav>
 
   <header>
-    <h1>
-    </h1>
+    <h1></h1>
   </header>
 
   <div class="container">
@@ -199,7 +167,7 @@
     <h2 data-aos="fade-right">Tentang Saya</h2>
     <p data-aos="fade-up">
       Nama saya Julius. Saya sedang belajar jadi coder, tapi kadang malah ngoding sambil ketiduran. Saya suka desain, tapi kadang hasilnya mirip PowerPoint anak SD.
-Tapi saya percaya: asal konsisten dan berani mencoba, semua orang bisa berkembang. Termasuk saya. Dan blog ini adalah bukti bahwa saya sedang berproses—meskipun kadang server-nya error duluan
+      Tapi saya percaya: asal konsisten dan berani mencoba, semua orang bisa berkembang. Termasuk saya. Dan blog ini adalah bukti bahwa saya sedang berproses—meskipun kadang server-nya error duluan.
     </p>
 
     <h2 data-aos="fade-right" id="sosial">Media Sosial</h2>
@@ -244,18 +212,6 @@ Tapi saya percaya: asal konsisten dan berani mencoba, semua orang bisa berkemban
       },
       retina_detect: true
     });
-
-    const music = document.getElementById("bgMusic");
-    const btn = document.getElementById("musicBtn");
-    function toggleMusic() {
-      if (music.paused) {
-        music.play();
-        btn.textContent = "Pause Musik";
-      } else {
-        music.pause();
-        btn.textContent = "Putar Musik";
-      }
-    }
   </script>
 </body>
 </html>
