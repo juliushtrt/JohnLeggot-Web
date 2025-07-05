@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JohnLeggot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #0f0f0f;
+      color: #ffffff;
+      overflow-x: hidden;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -10;
+      top: 0;
+      left: 0;
+    }
+
+    nav {
+      background: #111;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      color: #00ffd9;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #00ffee;
+    }
+
+    .music-control {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1000;
+    }
+
+    .music-control button {
+      background: #00ffd9;
+      border: none;
+      padding: 0.5rem 1rem;
+      color: #000;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .music-control button:hover {
+      background: #00ffee;
+    }
+
+    header {
+      padding: 3rem 1rem;
+      text-align: center;
+      background: url('foto/gitaran.jpg') center/cover no-repeat;
+      background-blend-mode: multiply;
+      background-color: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 30px #00ffd9;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      color: #00ffd9;
+      text-shadow: 0 0 10px #00ffd9;
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .profile-pic {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #00ffd9;
+      box-shadow: 0 0 15px #00ffd9;
+      margin-bottom: 1rem;
+    }
+
+    .profile-name {
+      font-size: 1.4rem;
+      color: #00ffd9;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      color: #00ffd9;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.6rem;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #dddddd;
+    }
+
+    a {
+      color: #00ffd9;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: #00ffee;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .social-icons a {
+      font-size: 2.2rem;
+      color: #00ffd9;
+      transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.3);
+      color: #00ffee;
+      box-shadow: 0 0 20px #00ffee;
+      text-shadow: 0 0 10px #00ffee;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #111;
+      margin-top: 3rem;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <div class="music-control">
+    <button onclick="toggleMusic()" id="musicBtn">Pause Musik</button>
+  </div>
+
+  <audio autoplay loop id="bgMusic">
+    <source src="https://cdn.pixabay.com/download/audio/2022/11/22/audio_06d259bd97.mp3?filename=deep-space-ambient-126566.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <nav>
+    <a href="index.html">Beranda</a>
+    <a href="galeri.html">Galeri Foto</a>
+    <a href="#sosial">Media Sosial</a>
+  </nav>
+
+  <header>
+    <h1>
+    </h1>
+  </header>
+
+  <div class="container">
+    <center>
+      <img src="Foto/Profile.jpg" alt="Foto Profil" class="profile-pic">
+      <div class="profile-name">John Leggot</div>
+    </center>
+
+    <h2 data-aos="fade-right">Tentang Saya</h2>
+    <p data-aos="fade-up">
+      Nama saya Julius. Saya sedang belajar jadi coder, tapi kadang malah ngoding sambil ketiduran. Saya suka desain, tapi kadang hasilnya mirip PowerPoint anak SD.
+Tapi saya percaya: asal konsisten dan berani mencoba, semua orang bisa berkembang. Termasuk saya. Dan blog ini adalah bukti bahwa saya sedang berproses—meskipun kadang server-nya error duluan
+    </p>
+
+    <h2 data-aos="fade-right" id="sosial">Media Sosial</h2>
+    <div class="social-icons" data-aos="fade-up">
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://t.me" target="_blank"><i class="fab fa-telegram"></i></a>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Julius Hutabarat. Semua Hak Dilindungi.
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    AOS.init();
+
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 100 },
+        color: { value: "#00ffd9" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: 2 },
+        move: {
+          enable: true,
+          speed: 1,
+          direction: "none",
+          out_mode: "out"
+        },
+        line_linked: {
+          enable: false
+        }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "repulse" }
+        }
+      },
+      retina_detect: true
+    });
+
+    const music = document.getElementById("bgMusic");
+    const btn = document.getElementById("musicBtn");
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+        btn.textContent = "Pause Musik";
+      } else {
+        music.pause();
+        btn.textContent = "Putar Musik";
+      }
+    }
+  </script>
+</body>
+</html>

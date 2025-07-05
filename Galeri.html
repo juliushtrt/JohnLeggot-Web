@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galeri Foto - Julius</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    #stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: black;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem;
+      background: #111;
+      box-shadow: 0 0 10px #00ffd9;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #00ffd9;
+    }
+
+    .gallery {
+      max-width: 1000px;
+      margin: 2rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ffd9;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    a.back {
+      display: block;
+      text-align: center;
+      margin: 2rem auto;
+      color: #00ffd9;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    a.back:hover {
+      color: #00ffee;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border: 3px solid #00ffd9;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .lightbox-buttons {
+      margin-top: 1rem;
+    }
+
+    .lightbox-buttons button {
+      background: #00ffd9;
+      color: #000;
+      border: none;
+      padding: 0.5rem 1.5rem;
+      margin: 0 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .lightbox-buttons button:hover {
+      background: #00ffee;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+  <header>
+    <h1>Galeri Foto</h1>
+  </header>
+
+  <div class="gallery" data-aos="fade-up">
+    <img src="Foto/foto 1.jpg" alt="Foto 1" onclick="openLightbox(0)" />
+    <img src="Foto/foto 2.jpg" alt="Foto 2" onclick="openLightbox(1)" />
+    <img src="Foto/foto 5.jpg" alt="Foto 3" onclick="openLightbox(2)" />
+    <img src="Foto/foto 4.jpg" alt="Foto 4" onclick="openLightbox(3)" />
+    <img src="Foto/foto 3.jpg" alt="Foto 5" onclick="openLightbox(4)" />
+    <img src="Foto/PribadiFoto.jpg" alt="Foto 6" onclick="openLightbox(5)" />
+  </div>
+
+  <a class="back" href="index.html">&larr; Kembali ke Beranda</a>
+
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <img id="lightbox-img" src="" alt="Lightbox Image">
+    <div class="lightbox-buttons">
+      <button onclick="prevImage(event)">&larr; Sebelumnya</button>
+      <button onclick="nextImage(event)">Berikutnya &rarr;</button>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("stars", {
+      particles: {
+        number: { value: 120 },
+        color: { value: "#00ffd9" },
+        shape: { type: "circle" },
+        opacity: { value: 0.4 },
+        size: { value: 2 },
+        move: {
+          enable: true,
+          speed: 4,
+          direction: "top-right",
+          straight: false,
+          bounce: false
+        },
+        line_linked: { enable: false }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: false }
+        },
+        modes: {
+          repulse: { distance: 100, duration: 0.4 }
+        }
+      },
+      retina_detect: true
+    });
+
+    const images = [
+      "galeri1.jpg",
+      "galeri2.jpg",
+      "galeri3.jpg",
+      "galeri4.jpg",
+      "galeri5.jpg",
+      "galeri6.jpg"
+    ];
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      document.getElementById('lightbox-img').src = images[index];
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+
+    function closeLightbox(event) {
+      if (event.target.id === 'lightbox' || event.target.tagName === 'IMG') {
+        document.getElementById('lightbox').style.display = 'none';
+      }
+    }
+
+    function nextImage(event) {
+      event.stopPropagation();
+      currentIndex = (currentIndex + 1) % images.length;
+      document.getElementById('lightbox-img').src = images[currentIndex];
+    }
+
+    function prevImage(event) {
+      event.stopPropagation();
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      document.getElementById('lightbox-img').src = images[currentIndex];
+    }
+  </script>
+</body>
+</html>
